@@ -10,7 +10,7 @@ copyIp=()=>{let e=document.querySelector(".copy-ip"),r=document.querySelector(".
 
 setDataFromConfigToHtml=async()=>{let e=document.querySelector(".logo-img"),r=document.querySelector(".logo-img-header"),t=document.querySelector(".server-name"),o=document.querySelector(".minecraft-server-ip");t&&(t.textContent=config.serverInfo.serverName),e&&(e.src=config.serverInfo.serverLogoImageFileName),o&&(o.textContent=config.serverInfo.serverIp);
 
-let logoPath = `/${config.serverInfo.serverLogoImageFileName.startsWith("images/") ? config.serverInfo.serverLogoImageFileName : "images/" + config.serverInfo.serverLogoImageFileName}`;
+let logoPath = (window.location.pathname === "/" || window.location.pathname === "/index.html") ? "images/logo.png" : "logo.png";
 r&&(r.src=logoPath);
 
 copyIp();let a=document.querySelector(".discord-online-users");a&&(a.textContent=await getDiscordOnlineUsers());let s=document.querySelector(".minecraft-online-players");if(s){let n=await getJavaOnlinePlayers(),c=await getBedrockOnlinePlayers(),i=n+c;s.textContent=`${i}`}if(window.location.pathname.includes("contact")){let l=document.querySelector(".contact-form"),v=document.querySelector(".location-after-submit");l&&(l.action=`https://formsubmit.co/${config.contactPage.email}`),v&&(v.value=location.href),a&&(a.textContent=await getDiscordOnlineUsers())}};
